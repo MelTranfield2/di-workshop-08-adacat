@@ -1,4 +1,9 @@
 class AdaCat {
+  /**
+   * Creates a cat
+   * @param {string} name 
+   * @param {string} owner 
+   */
   constructor(name, owner) {
     this.name = name
     this.owner = owner
@@ -7,6 +12,12 @@ class AdaCat {
     this.size = 30
   }
 
+  /**
+   * Sets hunger level to a value 0 - 10
+   * @param {number} newHunger 
+   * 
+   * @returns {void}
+   */
   setHunger(newHunger) {
     if (newHunger < 0) {
       newHunger = 0
@@ -17,6 +28,11 @@ class AdaCat {
     this.hunger = newHunger
   }
 
+    /**
+     * Formats description of cat according to its current state.
+     * 
+     * @returns {String} Description of the cat status
+     */
   getDescription() {
     var sleepLine
     if (this.isSleeping) {
@@ -36,6 +52,10 @@ class AdaCat {
     return lines.join('\n')
   }
 
+    /**
+     * Feeding cat reduces hunger, increases size if hunger below 3
+     * @returns {void}
+     */
   feed() {
     var hunger = this.hunger - 1
 
@@ -46,14 +66,26 @@ class AdaCat {
     this.setHunger(hunger)
   }
 
+  /**
+   * Sets isSleeping as true
+   * @returns {void}
+   */
   nap() {
     this.isSleeping = true
   }
 
+  /**
+   * Sets isSleeping as false
+   * @returns {void}
+   */
   wakeUp() {
     this.isSleeping = false
   }
 
+  /**
+   * Increments hunger and reduces size if hunger above 7
+   * @returns {void}
+   */
   play() {
     var hunger = this.hunger + 3
     if (hunger > 7) {
@@ -62,6 +94,10 @@ class AdaCat {
     this.setHunger(hunger)
   }
 
+  /**
+   * Calculates health score, depending on different size from ideal size, minus hunger
+   * @returns {number} healthScore
+   */
   getHealth() {
     // the ideal weight for cats is 30
     // this futher they are from this, the less
